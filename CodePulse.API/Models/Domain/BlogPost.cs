@@ -1,8 +1,8 @@
 ﻿namespace CodePulse.API.Models.Domain
 {
-    public class BlogPosts
+    public class BlogPost
     {
-        public Guid Id { get; set; };
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string Content { get; set; }
