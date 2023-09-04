@@ -23,7 +23,7 @@ namespace CodePulse.API.Controllers
 
         //ADD CATEGORY
         [HttpPost]
-        public async Task<IActionResult> CreateCategory([FromBody] CreateCAtegoryRequestDto request)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequestDto request)
         {
             // Map DTO To Domain Model
             var category = new Category
