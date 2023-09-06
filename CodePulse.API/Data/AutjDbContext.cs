@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodePulse.API.Data
 {
-    public class AutjDbContext : IdentityDbContext
+    public class AuthDbContext : IdentityDbContext
     {
-        public AutjDbContext(DbContextOptions options) : base(options)
+        public AuthDbContext(DbContextOptions options) : base(options)
         {
         }
 
