@@ -14,45 +14,47 @@ namespace CodePulse.API.Data
         {
             base.OnModelCreating(builder);
 
-
             var readerRoleId = "25fab2e7-cf85-4f17-a997-986b1b1766ac";
             var writerRoleId = "b2482525-37a1-4aeb-a168-7690faeeda0f";
 
-            // Create Reader and Writer Role
+
+            //Create Reader & Writer Role
             var roles = new List<IdentityRole>
             {
                 new IdentityRole()
                 {
                     Id = readerRoleId,
-                    Name = "Reader",
+                    Name = "reader",
                     NormalizedName = "Reader".ToUpper(),
                     ConcurrencyStamp = readerRoleId
                 },
                 new IdentityRole()
                 {
-                    Id = writerRoleId,
+                    Id=writerRoleId,
                     Name = "Writer",
                     NormalizedName = "Writer".ToUpper(),
                     ConcurrencyStamp = writerRoleId
                 }
             };
 
-            // Seed the roles
+            //Seed The Roles
             builder.Entity<IdentityRole>().HasData(roles);
 
 
-            // Create an Admin User
-            var adminUserId = "a78d247d-31fd-48c8-9670-73345180415a";
+
+            // Create A Admin User
+            var adminUserID = "a78d247d-31fd-48c8-9670-73345180415a";
+
             var admin = new IdentityUser()
             {
-                Id = adminUserId,
+                Id = adminUserID,
                 UserName = "admin@codepulse.com",
                 Email = "admin@codepulse.com",
                 NormalizedEmail = "admin@codepulse.com".ToUpper(),
                 NormalizedUserName = "admin@codepulse.com".ToUpper()
             };
 
-            admin.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(admin, "Admin@123");
+            admin.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(admin, "admin@123");
 
             builder.Entity<IdentityUser>().HasData(admin);
 
@@ -62,16 +64,15 @@ namespace CodePulse.API.Data
             {
                 new()
                 {
-                    UserId = adminUserId,
-                    RoleId = readerRoleId
+                    UserId = adminUserID,
+                    RoleId = readerRoleId,
                 },
                 new()
                 {
-                    UserId = adminUserId,
-                    RoleId = writerRoleId
+                    UserId = adminUserID,
+                    RoleId = writerRoleId,
                 }
             };
-
             builder.Entity<IdentityUserRole<string>>().HasData(adminRoles);
         }
     }
